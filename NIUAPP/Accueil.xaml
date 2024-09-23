@@ -1,0 +1,54 @@
+﻿<Window x:Class="NIUAPP.Accueil"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Accueil" Height="720" Width="1024">
+    <Grid>
+        <!-- Barre de menu -->
+        <Menu VerticalAlignment="Top">
+            <MenuItem Header="Fichier">
+                <MenuItem Header="Importer un fichier" Click="MenuItem_Import_Click"/>
+                <MenuItem Header="Voir les archives" Click="MenuItem_Archives_Click"/>
+            </MenuItem>
+            <MenuItem Header="Options">
+                <MenuItem Header="Préférences" Click="MenuItem_Preferences_Click"/>
+            </MenuItem>
+            <MenuItem Header="Aide">
+                <MenuItem Header="À propos" Click="MenuItem_About_Click"/>
+            </MenuItem>
+        </Menu>
+
+        <!-- Section Recherche -->
+        <StackPanel VerticalAlignment="Top" Margin="10,40,10,0">
+            <TextBlock Text="Recherche par NIU :" FontSize="14"/>
+            <StackPanel Orientation="Horizontal">
+                <TextBox Name="SearchTextBox" Width="200" Margin="0,0,10,0"/>
+                <Button Content="Rechercher" Width="100" Click="SearchButton_Click"/>
+            </StackPanel>
+        </StackPanel>
+
+        <!-- Tableau pour afficher les données Excel -->
+        <DataGrid Name="DataGridTable" AutoGenerateColumns="False" 
+                  VerticalAlignment="Stretch" Margin="10,80,10,10">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="N°" Binding="{Binding  N°}" />
+                <DataGridTextColumn Header="Raison sociale" Binding="{Binding RAISON_SOCIALE}" />
+                <DataGridTextColumn Header="NIU" Binding="{Binding NIU}" />
+                <DataGridTextColumn Header="Activité principale" Binding="{Binding ACTIVITE_PRINCIPALE}" />
+                <DataGridTextColumn Header="Regime" Binding="{Binding REGIME}" />
+                <DataGridTextColumn Header="Centre de rattachement" Binding="{Binding CENTRE_DE_RATTACHEMENT}" />
+                <DataGridTextColumn Header="Ville" Binding="{Binding VILLE}" />
+                <DataGridTextColumn Header="Quartier" Binding="{Binding QUARTIER}" />
+                <DataGridTextColumn Header="Lieux dit" Binding="{Binding LIEUX_DIT}" />
+
+                <!-- Colonne avec un bouton pour voir les détails -->
+                <DataGridTemplateColumn Header="Actions">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Voir détails" Click="ViewDetails_Click"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>
