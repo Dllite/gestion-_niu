@@ -6,17 +6,17 @@
         <TextBlock Text="Connexion" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,30,0,0" />
 
         <!-- Label pour l'email -->
-        <TextBlock Text="Email :" HorizontalAlignment="Left" Margin="50,100,0,0" VerticalAlignment="Top"/>
+        <TextBlock Text="Email :" HorizontalAlignment="Left" Margin="78.1,100,0,0" VerticalAlignment="Top"/>
         <!-- Champ pour entrer l'email -->
-        <TextBox Name="EmailTextBox" HorizontalAlignment="Left" Height="30" Margin="120,100,0,0" VerticalAlignment="Top" Width="200"/>
+        <TextBox Name="EmailTextBox" HorizontalAlignment="Left" Height="30" Margin="117.838,89.434,0,0" VerticalAlignment="Top" Width="200"/>
 
         <!-- Label pour le mot de passe -->
-        <TextBlock Text="Mot de passe :" HorizontalAlignment="Left" Margin="50,150,0,0" VerticalAlignment="Top"/>
+        <TextBlock Text="Mot de passe :" HorizontalAlignment="Left" Margin="37.03,150,0,0" VerticalAlignment="Top"/>
         <!-- Champ pour entrer le mot de passe -->
-        <PasswordBox Name="PasswordBox" HorizontalAlignment="Left" Height="30" Margin="120,150,0,0" VerticalAlignment="Top" Width="200"/>
+        <PasswordBox Name="PasswordBox" HorizontalAlignment="Left" Height="30" Margin="117.838,144.596,0,0" VerticalAlignment="Top" Width="200"/>
 
         <!-- Bouton de connexion -->
-        <Button Content="Se connecter" HorizontalAlignment="Center" VerticalAlignment="Top" Width="120" Margin="0,210,0,0" Height="35" Click="LoginButton_Click"/>
+        <Button Content="Se connecter" HorizontalAlignment="Center" VerticalAlignment="Top" Width="198.898" Margin="119.707,210,75.395,0" Height="35" Click="LoginButton_Click" Background="#FF0096CF"/>
 
         <!-- Message d'erreur -->
         <TextBlock Name="ErrorMessage" Text="Email ou mot de passe incorrect." Foreground="Red" HorizontalAlignment="Center" Margin="0,260,0,0" Visibility="Collapsed"/>

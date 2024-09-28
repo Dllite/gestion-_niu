@@ -1,13 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
-using Microsoft.Win32; // Ajoutez cette ligne
-
+using Microsoft.Win32;
 
 namespace NIUAPP
 {
@@ -19,9 +17,10 @@ namespace NIUAPP
             DisplayDetails(selectedRow);
         }
 
+        // Affiche les détails de la ligne sélectionnée dans l'ItemsControl
         private void DisplayDetails(DataRowView selectedRow)
         {
-            // Affiche les détails dans l'ItemsControl
+            DetailsList.Items.Clear();
             foreach (DataColumn column in selectedRow.Row.Table.Columns)
             {
                 string detail = $"{column.ColumnName}: {selectedRow[column.ColumnName].ToString()}";
@@ -29,35 +28,51 @@ namespace NIUAPP
             }
         }
 
+        // Gestionnaire d'événement pour exporter les détails en PDF
         private void ExportToPdf_Click(object sender, RoutedEventArgs e)
         {
+            // Configurer la boîte de dialogue de sauvegarde pour le fichier PDF
             SaveFileDialog saveFileDialog = new SaveFileDialog
             {
                 Filter = "Fichiers PDF (*.pdf)|*.pdf",
-                Title = "Exporter en PDF"
+                Title = "Exporter les détails en PDF"
             };
 
             if (saveFileDialog.ShowDialog() == true)
             {
                 try
                 {
-                    Document document = new Document();
-                    PdfWriter.GetInstance(document, new FileStream(saveFileDialog.FileName, FileMode.Create));
-                    document.Open();
-
-                    document.Add(new Paragraph("Détails de l'élément", FontFactory.GetFont("Arial", 20, Font.BOLD)));
-
-                    foreach (var item in DetailsList.Items)
+                    // Créer un document PDF
+                    using (FileStream stream = new FileStream(saveFileDialog.FileName, FileMode.Create))
                     {
-                        document.Add(new Paragraph(item.ToString()));
+                        Document document = new Document(PageSize.A4, 10, 10, 10, 10); // Ajouter des marges
+                        PdfWriter writer = PdfWriter.GetInstance(document, stream);
+
+                        document.Open();
+                        // Ajouter un titre au PDF
+                        var titleFont = FontFactory.GetFont("Arial", 20, Font.BOLD);
+                        var bodyFont = FontFactory.GetFont("Arial", 12, Font.NORMAL);
+                        document.Add(new Paragraph("Détails de l'élément", titleFont));
+                        document.Add(new Paragraph("\n"));
+
+                        // Ajouter les détails de l'élément
+                        foreach (var item in DetailsList.Items)
+                        {
+                            document.Add(new Paragraph(item.ToString(), bodyFont));
+                        }
+
+                        // Ajouter une ligne de séparation
+                        document.Add(new Paragraph("\n-------------------------------\n", bodyFont));
+
+                        document.Close();
                     }
 
-                    document.Close();
-                    MessageBox.Show("Exportation réussie !");
+                    // Message de confirmation
+                    MessageBox.Show("Exportation réussie !", "Succès", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Erreur lors de l'exportation : " + ex.Message);
+                    MessageBox.Show("Erreur lors de l'exportation : " + ex.Message, "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
         }

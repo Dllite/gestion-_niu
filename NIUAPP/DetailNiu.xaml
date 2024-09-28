@@ -1,13 +1,55 @@
-﻿<Window x:Class="NIUAPP.DetailWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Détails" Height="400" Width="600">
-    <Grid>
-        <StackPanel Margin="12.44,10,7.56,10">
-            <TextBlock Text="Détails de l'élément" FontSize="18" FontWeight="Bold" Margin="0,0,0,20"/>
-            <ItemsControl Name="DetailsList"/>
-            <Button Content="Exporter en PDF" Click="ExportToPdf_Click" />
+﻿<Window
+    x:Class="NIUAPP.DetailWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="Détails" Height="783.781" Width="720"
+    Background="#F9F9F9" 
+    WindowStartupLocation="CenterScreen"
+    ResizeMode="NoResize">
 
-        </StackPanel>
+    <Grid>
+        <ScrollViewer Margin="10">
+            <Border CornerRadius="8" Background="White" BorderBrush="#E0E0E0" BorderThickness="1">
+                <StackPanel Margin="20">
+                    <TextBlock Text="Attestation" FontSize="24" FontWeight="Bold" Margin="0,0,0,20" Foreground="#333333"/>
+
+                    <ItemsControl x:Name="DetailsList" Margin="0,0,0,20">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Border Background="#EAEAEA" Margin="0,0,0,5" CornerRadius="4">
+                                    <TextBlock Text="{Binding}" Padding="10" Foreground="#555555"/>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+
+                    <!-- Export to PDF Button -->
+                    <Border CornerRadius="4" Background="#007ACC" Margin="0,10,0,0">
+                        <Button Content="Exporter en PDF" 
+                                Click="ExportToPdf_Click" 
+                                Height="40" 
+                                Foreground="White" 
+                                FontWeight="Bold" 
+                                BorderBrush="Transparent"
+                                Cursor="Hand"
+                                HorizontalAlignment="Stretch">
+                            <Button.Style>
+                                <Style TargetType="Button">
+                                    <Setter Property="Opacity" Value="1"/>
+                                    <Setter Property="Background" Value="Transparent"/>
+                                    <!-- Set to Transparent for Border -->
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="#005BA1"/>
+                                            <!-- Change background on hover -->
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                        </Button>
+                    </Border>
+                </StackPanel>
+            </Border>
+        </ScrollViewer>
     </Grid>
 </Window>

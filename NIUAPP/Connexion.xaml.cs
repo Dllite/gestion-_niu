@@ -1,18 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Data.SQLite;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-
 
 namespace NIUAPP
 {
@@ -28,22 +16,60 @@ namespace NIUAPP
             // Récupérer les informations d'identification
             string email = EmailTextBox.Text;
             string password = PasswordBox.Password;
+            string connectionString = "Data Source=database.db;Version=3;"; // Chemin relatif
 
-            // Exemple simple de vérification des identifiants (à remplacer par une vraie validation)
-            if (email == "admin@gmail.com" && password == "password")
+            using (SQLiteConnection connection = new SQLiteConnection(connectionString))
             {
-                Accueil accueil = new Accueil();
-                accueil.Show();
+                try
+                {
+                    connection.Open(); // Ouvre la connexion
+                    
+                    // Créer la table Users si elle n'existe pas
+                    string createTableQuery = @"
+                CREATE TABLE IF NOT EXISTS Users (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    email TEXT NOT NULL,
+                    password TEXT NOT NULL
+                );";
 
-                // Fermer la fenêtre actuelle (MainWindow)
-                this.Close();
-                // Code pour rediriger vers une autre fenêtre ou effectuer d'autres actions
-            }
-            else
-            {
-                ErrorMessage.Visibility = Visibility.Visible; // Affiche le message d'erreur
+                    SQLiteCommand createTableCommand = new SQLiteCommand(createTableQuery, connection);
+                    createTableCommand.ExecuteNonQuery();
+
+                    // Insérer un utilisateur de test si besoin
+                    string insertTestUserQuery = "INSERT INTO Users (email, password) VALUES ('admin@gmail.com', 'password');";
+                    SQLiteCommand insertCommand = new SQLiteCommand(insertTestUserQuery, connection);
+                    insertCommand.ExecuteNonQuery();
+
+                    // Vérification des identifiants
+                    string query = "SELECT * FROM Users WHERE email = @Email AND password = @Password;";
+                    SQLiteCommand command = new SQLiteCommand(query, connection);
+                    command.Parameters.AddWithValue("@Email", email);
+                    command.Parameters.AddWithValue("@Password", password);
+
+                    using (SQLiteDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.HasRows)
+                        {
+                            // Identifiants corrects
+                            Accueil accueil = new Accueil();
+                            accueil.Show();
+                            this.Close();
+                        }
+                        else
+                        {
+                            // Identifiants incorrects
+                            ErrorMessage.Visibility = Visibility.Visible;
+                        }
+                    }
+
+                    connection.Close(); // Fermer la connexion
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erreur lors de la connexion à la base de données : " + ex.Message);
+                }
             }
         }
+
     }
 }
-
