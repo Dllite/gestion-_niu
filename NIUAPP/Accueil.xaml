@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:materialDesign="http://materialdesigninx.net/winfx/xaml/themes" 
         Title="Accueil" Height="720" Width="1024">
-    <Grid>
+    <Grid Margin="0,-6,0,6">
         <!-- Barre de menu -->
         <Menu VerticalAlignment="Top">
             <MenuItem Header="Fichier">
@@ -19,17 +19,10 @@
         </Menu>
 
         <!-- Section Recherche -->
-        <StackPanel VerticalAlignment="Top" Margin="10,40,10,0">
-            <TextBlock Text="Recherche par NIU :" FontSize="14"/>
-            <StackPanel Orientation="Horizontal">
-                <TextBox Name="SearchTextBox" Width="200" Margin="0,0,10,0"/>
-                <Button Content="Rechercher" Width="100" Click="SearchButton_Click"/>
-            </StackPanel>
-        </StackPanel>
+        <StackPanel VerticalAlignment="Top" Margin="10,40,10,0"/>
 
         <!-- Tableau pour afficher les données Excel -->
-        <DataGrid Name="DataGridTable" AutoGenerateColumns="False" 
-                  VerticalAlignment="Stretch" Margin="10,80,10,10">
+        <DataGrid Name="DataGridTable" AutoGenerateColumns="False" Margin="10,260,10,10">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="N°" Binding="{Binding  N°}" />
                 <DataGridTextColumn Header="Raison sociale" Binding="{Binding RAISON_SOCIALE}" />
@@ -58,6 +51,22 @@
              VerticalAlignment="Center" 
              HorizontalAlignment="Center"
              Width="100" Height="10"/>
+        <StackPanel Orientation="Horizontal" Margin="10,89,10,446" RenderTransformOrigin="0.568,0.495">
+            <TextBox x:Name="SearchTextBox" Width="299" Height="150" VerticalAlignment="Bottom" Margin="8,0,0,5" BorderThickness="0,0,0,1" Text="Entrez un ou plusieurs NIU (Ex : CHDE87321233, 367894UDNWJD,USAHSY7283GSJSVD, ...)" Background="#FFF1F1EB" TextAlignment="Center" TextWrapping="WrapWithOverflow" FontFamily="Calibri Light" FontSize="15" IsEnabled="False"/>
+            <Button Content="Rechercher" Width="125" Click="SearchButton_Click" RenderTransformOrigin="0.5,0.5" Height="46" Margin="15,0,0,10" FontFamily="Times New Roman" FontWeight="Normal" FontSize="20" Background="#FF326BB7" BorderBrush="#FF2251E2" VerticalAlignment="Bottom">
+                <Button.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="-0.637"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Button.RenderTransform>
+            </Button>
+        </StackPanel>
+        <TextBlock Text="Recherche par NIU :" FontSize="16" Margin="22,62,859,615" FontFamily="Calibri"/>
+        <TextBlock Text="Recherche par NIU :" FontSize="16" Margin="22,62,859,615" FontFamily="Calibri"/>
+        <TextBlock Text="Recherche par NIU :" FontSize="16" Margin="22,62,859,615" FontFamily="Calibri"/>
 
     </Grid>
 </Window>

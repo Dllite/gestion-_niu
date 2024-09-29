@@ -1,7 +1,10 @@
-﻿using System;
+﻿using MaterialDesignThemes.Wpf;
+using System;
 using System.Data.SQLite;
 using System.Windows;
-
+using MaterialDesignColors;
+using MaterialDesignThemes.Wpf;
+using System.Windows.Input;
 namespace NIUAPP
 {
     public partial class MainWindow : Window

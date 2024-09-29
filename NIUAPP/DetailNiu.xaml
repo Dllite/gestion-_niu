@@ -11,7 +11,7 @@
         <ScrollViewer Margin="10">
             <Border CornerRadius="8" Background="White" BorderBrush="#E0E0E0" BorderThickness="1">
                 <StackPanel Margin="20">
-                    <TextBlock Text="Attestation" FontSize="24" FontWeight="Bold" Margin="0,0,0,20" Foreground="#333333"/>
+                    <TextBlock FontSize="24" Margin="0,0,0,20" Foreground="#333333" TextAlignment="Center" TextWrapping="WrapWithOverflow" FontFamily="Calibri" FontWeight="Bold"><Run Text="A"/><Run Text="TTESTATION D'IMMATRICULATIO"/><Run Language="fr-fr" Text="N"/><LineBreak/><Run Language="fr-fr" Text="ATTESTATION OF TAXPAYERS REGISTRATION"/></TextBlock>
 
                     <ItemsControl x:Name="DetailsList" Margin="0,0,0,20">
                         <ItemsControl.ItemTemplate>
@@ -32,7 +32,7 @@
                                 FontWeight="Bold" 
                                 BorderBrush="Transparent"
                                 Cursor="Hand"
-                                HorizontalAlignment="Stretch">
+                                HorizontalAlignment="Stretch" Width="600" FontFamily="Calibri" FontSize="18">
                             <Button.Style>
                                 <Style TargetType="Button">
                                     <Setter Property="Opacity" Value="1"/>
