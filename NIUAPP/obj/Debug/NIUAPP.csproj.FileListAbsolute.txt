@@ -118,7 +118,6 @@ C:\Users\DL LITE\source\repos\NIUAPP\NIUAPP\bin\Debug\System.Text.Encoding.CodeP
 C:\Users\kamde\Documents\Visual Studio 2022\Avocat\gestion-_niu\NIUAPP\bin\Debug\NIUAPP.exe.config
 C:\Users\kamde\Documents\Visual Studio 2022\Avocat\gestion-_niu\NIUAPP\bin\Debug\NIUAPP.exe
 C:\Users\kamde\Documents\Visual Studio 2022\Avocat\gestion-_niu\NIUAPP\bin\Debug\NIUAPP.pdb
-C:\Users\kamde\Documents\Visual Studio 2022\Avocat\gestion-_niu\NIUAPP\bin\Debug\BouncyCastle.Crypto.dll
 C:\Users\kamde\Documents\Visual Studio 2022\Avocat\gestion-_niu\NIUAPP\bin\Debug\ClosedXML.dll
 C:\Users\kamde\Documents\Visual Studio 2022\Avocat\gestion-_niu\NIUAPP\bin\Debug\DocumentFormat.OpenXml.dll
 C:\Users\kamde\Documents\Visual Studio 2022\Avocat\gestion-_niu\NIUAPP\bin\Debug\EntityFramework.dll
@@ -235,3 +234,5 @@ C:\Users\kamde\Documents\Visual Studio 2022\Avocat\gestion-_niu\NIUAPP\obj\Debug
 C:\Users\kamde\Documents\Visual Studio 2022\Avocat\gestion-_niu\NIUAPP\bin\Debug\BouncyCastle.Cryptography.dll
 C:\Users\kamde\Documents\Visual Studio 2022\Avocat\gestion-_niu\NIUAPP\bin\Debug\BouncyCastle.Cryptography.xml
 C:\Users\kamde\Documents\Visual Studio 2022\Avocat\gestion-_niu\NIUAPP\obj\Debug\App.baml
+C:\Users\kamde\Documents\Visual Studio 2022\Avocat\gestion-_niu\NIUAPP\bin\Debug\database.db
+C:\Users\kamde\Documents\Visual Studio 2022\Avocat\gestion-_niu\NIUAPP\obj\Debug\NIUAPP_Content.g.cs

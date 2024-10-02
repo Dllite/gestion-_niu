@@ -8,18 +8,13 @@
         <materialDesign:Card UniformCornerRadius="15" Background="{DynamicResource MaterialDesignPaper}" Margin="25"   >
             <materialDesign:DialogHost CloseOnClickAway="True" x:Name="DialogHost">
                 <StackPanel>
-                    <materialDesign:PopupBox HorizontalAlignment="Right" Margin="0 20 20 0" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False" Height="25">
-                        <StackPanel Margin="16 10 0 6" Orientation="Horizontal" HorizontalAlignment="Center">
-                            <TextBlock VerticalAlignment="Center" Text="Dark Mode" />
-                            <ToggleButton Cursor="Hand" ToolTip="Enable Dark Mode" Margin="12 0 8 0"
-                                          x:Name="themeToggle"/>
-                            <Button ToolTip="Des difficultes pour vous connecter ?" Margin="0 8 0 0" Content="Aide"/>
-                            <Button x:Name="btn_exit" ToolTip="Close Application" Content="Fermer L'application" />
-                            
-                        </StackPanel>                        
-                    </materialDesign:PopupBox>
+                    <materialDesign:PackIcon Kind="CloseOutline" Width="30" Height="30" HorizontalAlignment="Right" Margin="0 20 20 0"
+                         Foreground="IndianRed"  Cursor="Hand" MouseDown="CloseWindow"/>
+                    <!-- Message d'erreur -->
+                    <TextBlock Name="ErrorMessage" Text="Email ou mot de passe incorrect." Foreground="Red" HorizontalAlignment="Center" Margin="0,0,0,0" Visibility="Collapsed"/>
                     <Image Margin="0 60 0 5" Source="logo.jpg" Height="100"/>
-                    <TextBlock Margin="0 25 0 5" HorizontalAlignment="Center" FontSize="28" FontWeight="Bold" Text="Bienvenue"/>
+                    
+                    <TextBlock Margin="0 25 0 5" HorizontalAlignment="Center" FontSize="28" FontWeight="Bold" Text="Bienvenue Sur DUF_PAT"/>
 
                     <TextBlock Text="Connectez vous" FontSize="17" FontWeight="SemiBold" HorizontalAlignment="Center" Margin="0,25,0,5"/>
                     <!-- Label pour l'email -->
@@ -33,8 +28,7 @@
                     <Button Content="Se connecter" x:Name="loginBtn" Width="300" Margin="0 20 0 0" Click="LoginButton_Click" Background="#FF0096CF"
                              Height="53" materialDesign:ButtonAssist.CornerRadius="10" FontSize="18" />
 
-                    <!-- Message d'erreur -->
-                    <TextBlock Name="ErrorMessage" Text="Email ou mot de passe incorrect." Foreground="Red" HorizontalAlignment="Center" Margin="0,260,0,0" Visibility="Collapsed"/>
+                    
 
                 </StackPanel>
             </materialDesign:DialogHost>            

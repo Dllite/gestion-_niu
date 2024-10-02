@@ -8,6 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("logo.jpg")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("database.db")]
 
 
